@@ -1,5 +1,6 @@
 from __future__ import division
 from standard_math import mean
+import math as m
 
 
 class LinearRegression:
@@ -66,4 +67,20 @@ class LinearRegression:
         r_squared = sum(yhat_minus_ybar_squared) / sum(y_minus_ybar_squared)
 
         return r_squared
+
+    def standarderror(self, y, y_dash):
+        """
+        The standard error of the estimate is a measure of the accuracy of
+        predictions made with a regression line.
+
+        :param y:
+        :param y_dash:
+        :return: standard_error
+        """
+        y_minus_ydash = [i-j for i,j in zip(y, y_dash)]
+        y_minus_ydash_squared = [i**2 for i in y_minus_ydash]
+        total = sum(y_minus_ydash_squared)
+        n = len(y)
+        standard_error = m.sqrt(total/n)
+        return standard_error
 
