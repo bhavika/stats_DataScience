@@ -2,6 +2,7 @@ import math
 import matplotlib.pyplot as plt
 import collections as c
 import random
+from __future__ import division
 
 
 def uniform_cdf(x):
@@ -60,7 +61,7 @@ def make_hist(p, n, num_points):
     histogram = c.Counter(data)
 
     plt.bar([x-0.4 for x in histogram.keys()],
-           [v/ num_points for v in histogram.values()],
+           [v / num_points for v in histogram.values()],
            0.8, color='0.75')
 
     mu = p * n

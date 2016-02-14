@@ -15,3 +15,8 @@ A collection of commonly used statistical methods in data science.
 + Median
 + Mode
 + Quantile
+
+
+### Gradient Descent
+
+### Linear Regression
