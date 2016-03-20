@@ -3,7 +3,7 @@ from collections import Counter
 import matplotlib.pyplot as plt
 from linear_algebra import make_matrix, shape, get_column
 from statistics import correlation
-
+import random
 
 def bucketize(point, bucket_size):
     """floor the point to the next lower multiple of bucket_size"""
@@ -33,3 +33,36 @@ def correlation_matrix(data):
         return correlation(get_column(data, i), get_column(data, j))
 
     return make_matrix(num_columns, num_columns, matrix_entry)
+
+
+def split_data(data, prob):
+    results = [], []
+    for row in data:
+        results[0 if random.random() < prob else 1].append(row)
+    return results
+
+
+def train_test_split(x, y , test_pct):
+    data = zip(x, y)
+    train, test = split_data(data, 1 - test_pct)
+    x_train, y_train = zip(*train)
+    x_test, y_test = zip(*test)
+    return x_train, x_test, y_train, y_test
+
+
+def precision(tp, fp, tn, fn):
+    return tp/(tp+fp)
+
+
+def recall(tp, fp, tn, fn):
+    return tp/(tp+fn)
+
+
+
+def f1_score(tp, fp, tn, fn):
+    """f1_score is the harmonic mean of precision and recall"""
+    p = precision(tp, fp, tn, fn)
+    r = recall(tp, fp, tn, fn)
+
+    return 2 * p *r / (p+r)
+
