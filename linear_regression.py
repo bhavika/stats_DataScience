@@ -8,7 +8,7 @@ class LinearRegression:
         self.x = x
         self.y = y
 
-    def get_bob1(self, x, y):
+    def get_b0b1(self, x, y):
 
         """
         In simple linear regression, b1 is the slope of the regression line.
@@ -59,7 +59,7 @@ class LinearRegression:
         y_bar = mean(y)
         y_minus_ybar = [j - y_bar for j in y]
         y_minus_ybar_squared = [j ** 2 for j in y_minus_ybar]
-        b0, b1 = self.get_bob1(x, y)
+        b0, b1 = self.get_b0b1(x, y)
         y_hat = [b0 + b1 * i for i in x]
         yhat_minus_ybar = [yh - y_bar for yh in y_hat]
         yhat_minus_ybar_squared = [h ** 2 for h in yhat_minus_ybar]
